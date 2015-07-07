@@ -4,7 +4,8 @@ module RandomCorrelationMatrices
     
     # Based on
     # Lewandowski, Kurowicka, Joe
-    # "Generating random correlation matrices based on vines and extended onion method"
+    # "Generating random correlation matrices based on vines
+    #   and extended onion method"
     # Journal of Multivariate Analysis 100 (2009)
     # doi:10.1016/j.jmva.2009.04.008
     export randcormatrix
@@ -33,5 +34,18 @@ module RandomCorrelationMatrices
         return r
     end
 
+
+    # Use randcormatrix + a desired vector of standard deviations
+    # for each term to generate a random covariance matrix
+    export randcovmatrix
+    function randcovmatrix(d, η, σ)
+        length(σ) != d && throw(DimensionMismatch("length(sigma) doesn't match d"))
+        r = randcormatrix(d, η)
+        Σ = zeros(d,d)
+        @inbounds for i in 1:d, j in 1:d
+            Σ[i,j] = r[i,j] * σ[i] * σ[j]
+        end
+        return Σ
+    end
 
 end # module

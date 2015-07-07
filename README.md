@@ -6,7 +6,9 @@ Generate random correlation matrices, for some definition of random. Currently s
 
 > Lewandowski, Daniel, Dorota Kurowicka, and Harry Joe. "Generating random correlation matrices based on vines and extended onion method." Journal of multivariate analysis 100.9 (2009): 1989-2001. [doi:10.1016/j.jmva.2009.04.008](http://dx.doi.org/10.1016/j.jmva.2009.04.008)
 
-This package exports one function, `randcormatrix(d, η)`. `d` is the dimension, and `η` is a parameter that controls the distribution of the off-diagonal terms. To get a feel for how to set `η`, consider the following output from `test/runtests.jl`, which shows some example matrices and the average range of off-diagonals:
+This package exports two functions, `randcormatrix(d, η)` and `randcovmatrix(d, η, σ)` . `d` is the dimension, and `η` is a parameter that controls the distribution of the off-diagonal terms. `randcovmatrix` is used to generate a covariance matrix from the output of `randcormatrix`, where the standard deviation of each component is controlled by `σ`.
+
+To get a feel for how to set `η`, consider the following output from `test/runtests.jl`, which shows some example matrices and the average range of off-diagonals:
 
 ```
 η => 2
