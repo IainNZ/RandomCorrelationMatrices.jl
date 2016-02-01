@@ -30,7 +30,7 @@ println("\nRandom covariance matrix")
 σ = [100, 200, 300, 400, 500]
 @show σ
 Σ = randcovmatrix(5, 10, σ)
-L = chol(Σ,:L)
+L = chol(Σ,Val{:L})
 samples = 100_000
 results = zeros(5,samples)
 for i in 1:samples
