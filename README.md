@@ -1,6 +1,8 @@
 # RandomCorrelationMatrices
 
 [![Build Status](https://travis-ci.org/IainNZ/RandomCorrelationMatrices.jl.svg?branch=master)](https://travis-ci.org/IainNZ/RandomCorrelationMatrices.jl)
+[![RandomCorrelationMatrices](http://pkg.julialang.org/badges/RandomCorrelationMatrices_0.3.svg)](http://pkg.julialang.org/?pkg=RandomCorrelationMatrices&ver=0.3)
+[![RandomCorrelationMatrices](http://pkg.julialang.org/badges/RandomCorrelationMatrices_0.4.svg)](http://pkg.julialang.org/?pkg=RandomCorrelationMatrices&ver=0.4)
 
 Generate random correlation matrices, for some definition of random. Currently supports just one definition/method:
 
