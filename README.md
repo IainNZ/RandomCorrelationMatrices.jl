@@ -2,14 +2,11 @@
 
 [![Build Status](https://travis-ci.org/IainNZ/RandomCorrelationMatrices.jl.svg?branch=master)](https://travis-ci.org/IainNZ/RandomCorrelationMatrices.jl)
 
-[![RandomCorrelationMatrices](http://pkg.julialang.org/badges/RandomCorrelationMatrices_0.3.svg)](http://pkg.julialang.org/?pkg=RandomCorrelationMatrices&ver=0.3)
-[![RandomCorrelationMatrices](http://pkg.julialang.org/badges/RandomCorrelationMatrices_0.4.svg)](http://pkg.julialang.org/?pkg=RandomCorrelationMatrices&ver=0.4)
-
 Generate random correlation matrices, for some definition of random. Currently supports just one definition/method:
 
 > Lewandowski, Daniel, Dorota Kurowicka, and Harry Joe. "Generating random correlation matrices based on vines and extended onion method." Journal of multivariate analysis 100.9 (2009): 1989-2001. [doi:10.1016/j.jmva.2009.04.008](http://dx.doi.org/10.1016/j.jmva.2009.04.008)
 
-This package exports two functions, `randcormatrix(d, η)` and `randcovmatrix(d, η, σ)` . `d` is the dimension, and `η` is a parameter that controls the distribution of the off-diagonal terms. `randcovmatrix` is used to generate a covariance matrix from the output of `randcormatrix`, where the standard deviation of each component is controlled by `σ`.
+This package has two functions, `randcormatrix(d, η)` and `randcovmatrix(d, η, σ)` . `d` is the dimension, and `η` is a parameter that controls the distribution of the off-diagonal terms. `randcovmatrix` is used to generate a covariance matrix from the output of `randcormatrix`, where the standard deviation of each component is controlled by `σ`.
 
 To get a feel for how to set `η`, consider the following output from `test/runtests.jl`, which shows some example matrices and the average range of off-diagonals:
 
