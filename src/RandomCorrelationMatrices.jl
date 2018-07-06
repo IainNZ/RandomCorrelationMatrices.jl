@@ -2,9 +2,9 @@ __precompile__()
 
 module RandomCorrelationMatrices
 
-    using Distributions
+    import LinearAlgebra: cholesky, diag, norm
+    import Distributions
 
-    export randcormatrix
     """
         randcormatrix(d, η)
 
@@ -19,22 +19,20 @@ module RandomCorrelationMatrices
     """
     function randcormatrix(d, η)
         β = η + (d-2)/2
-        u = rand(Beta(β,β))
+        u = rand(Distributions.Beta(β, β))
         r₁₂ = 2*u - 1
         r = [   1 r₁₂ ;
               r₁₂   1 ]
-        # In published paper this index is n = 2:d-1
-        # n is never mentioned again, but a mysterious k is
-        # We'll thus use k
-        # Similar approach was taken here:
-        # http://stats.stackexchange.com/a/125017/58921
+        # In published paper this index is n = 2:d-1. n is never mentioned
+        # again, but a mysterious k is, so we'll thus use k. A similar approach
+        # was taken here: http://stats.stackexchange.com/a/125017/58921
         for k in 2:d-1
             β = β - 1/2
-            y = rand(Beta(k/2,β))
+            y = rand(Distributions.Beta(k/2, β))
             u = randn(k)
             u /= norm(u)
             w = sqrt(y)*u
-            A = chol(r, Val{:L})
+            A = cholesky(r).L
             z = A*w
             r = [ r  z ;
                   z' 1 ]
@@ -42,7 +40,6 @@ module RandomCorrelationMatrices
         return r
     end
 
-    export randcovmatrix
     """
         randcovmatrix(d, η, σ)
 
