@@ -7,7 +7,7 @@ import RandomCorrelationMatrices
 
 # This is not a numerical test. The code just generates some examples.
 # However, if it fails to run, thats a good sign something is wrong.
-Random.srand(12345)
+Random.seed!(12345)
 println("Random correlation matrix")
 n = 4
 for η in [2, 8, 32, 128]
@@ -32,7 +32,7 @@ end
 
 
 @testset "Random covariance matrix" begin
-    Random.srand(12345)
+    Random.seed!(12345)
     σ = [100, 200, 300, 400, 500]
     Σ = RandomCorrelationMatrices.randcovmatrix(5, 10, σ)
     L = cholesky(Hermitian(Σ)).L
